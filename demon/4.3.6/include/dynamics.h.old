@@ -1,0 +1,168 @@
+C     DYNAMICS COMMON
+C
+C     Purpose: Common for molecular dynamics.
+C
+C     History: - Creation (24.02.04, AMK)
+C
+C     ******************************************************************
+C
+C     List of variables:
+C
+C     DELSTD  : Average and standard deviation of alpha anisotropy.
+C     DELSUM  : Linear and quadratic sums of alpha anisotropy.
+C     DIPSTD  : Average and standard deviation of dipole moment.
+C     DIPSUM  : Linear and quadratic sums of dipole moment.
+C     DXISTD  : Average and standard deviation of xi anisotropy.
+C     DXISUM  : Linear and quadratic sums of xi anisotropy.
+C     EKIN    : Instantaneous kinetic energy.
+C     EKINMAX : Maximum of instantaneous kinetic energy.
+C     EKINMIN : Minimum of instantaneous kinetic energy.
+C     EKINSTD : Average and standard deviation of kinetic energy.
+C     EKINSUM : Linear and quadratic sums of kinetic energy.
+C     EPOT    : Instantaneous potential energy.
+C     EPOTMAX : Maximum of instantaneous potential energy.
+C     EPOTMIN : Minimum of instantaneous potential energy.
+C     EPOTSTD : Average and standard deviation of potential energy.
+C     EPOTSUM : Linear and quadratic sums of potential energy.
+C     ESYS    : Instantaneous system energy including thermostat.
+C     ESYSMAX : Maximum of instantaneous system energy.
+C     ESYSMIN : Minimum of instantaneous system energy.
+C     ESYSSTD : Average and standard deviation of system energy.
+C     ESYSSUM : Linear and quadratic sums of system energy.
+C     ETHERMO : Energy transfer to the thermostat.
+C     ETOT    : Instantaneous total (nuclear and electronic) energy.
+C     ETOTMAX : Maximum of instantaneous total energy.
+C     ETOTMIN : Minimum of instantaneous total energy.
+C     ETOTSTD : Average and standard deviation of total energy.
+C     ETOTSUM : Linear and quadratic sums of total energy.
+C     ETRJ    : Average energy of trajectory.
+C     FIXVAR  : Connector list for fixed moelcular dynamics variables.
+C     FRICTION: Friction coefficient for temperature control.
+C     IRCSTEP : Step of IRC path that is marked.
+C     IRCTYP  : Specifiy IRC file (deMon.trj) operation.
+C     LLTMOS  : Lower molecular orbital trajectory limit.
+C     MAGSTD  : Average and standard deviation of magnetizability.
+C     MAGSUM  : Linear and quadratic sums of magnetizability.
+C     MDBATH  : Requested molecular dynamics bath.
+C     MDCYC   : Molecular dynamics cycle.
+C     MDDEL   : Molecular dynamics polarizability anisotropy.
+C     MDDIP   : Molecular dynamics dipole moments.
+C     MDDXI   : Molecular dynamics xi anisotropy.
+C     MDFLP   : True for LP force conservation.
+C     MDINT   : Step interval for MD printing.
+C     MDMAG   : Molecular dynamics magnetizability.
+C     MDNMR   : Molecular dynamics NMR shieldings.
+C     MDPOL   : Molecular dynamics polarizabilities.
+C     MDRADIUS: Molecular dynamics sphere radius for space confinement.
+C     MDROG   : Molecular dynamics rotational g-tensor.
+C     MDSTEP  : Requested molecular dynamics time step.
+C     MDTAU   : Molecular dynamics bath parameter.
+C     MDTEMP  : Requested molecular dynamics temperature.
+C     MDTEMP0 : Initial molecular dynamics temperature.
+C     MDTIME  : Elapsed molecular dynamics trajectory time.
+C     MDVELO  : Initial nuclear velocity setting.
+C     MDVLP   : True for LP velocity conservation.
+C     MDZERO  : Zero external moments in molecular dynamics.
+C     NFIXVAR : Number of fixed variables in molecular dynamics.
+C     NHCOORD : Nose-Hoover chain thermostat coordinates.
+C     NHFORCE : Nose-Hoover chain thermostat forces.
+C     NHITS   : Number of hits with confinement sphere.
+C     NHVELOS : Nose-Hoover chain thermostat velocities.
+C     NNHC    : Number of Nose-Hoover thermostats in the chain.
+C     NMRSTD  : Average and standard deviation of NMR shieldings.
+C     NMRSUM  : Linear and quadratic sums of NMR shieldings.
+C     POLSTD  : Average and standard deviation of polarizability.
+C     POLSUM  : Linear and quadratic sums of polarizability.
+C     PTRJ    : Average property expectation value.
+C     QNOSE   : Nose-Hoover thermostat masses.
+C     ROGSTD  : Average and standard deviation of rotational g-tensor.
+C     ROGSUM  : Linear and quadratic sums of rotational g-tensor.
+C     SEPSTD  : Average and standard deviation of septor component.
+C     SEPSUM  : Linear and quadratic sums of septor component.
+C     SIMINT  : Step inteval for trajectory analysis or simulation.
+C     THOOVER : Temperature scaling factor of Hoover thermostat.
+C     TKIN    : Instantaneous kinetic temperature.
+C     TKINSTD : Average and standard deviation of kinetic temperature.
+C     TKINSUM : Linear and quadratic sums of kinetic temperature.
+C     TRJACC  : True, if acceleration are written to the trajectory.
+C     TRJATOM : Atom for which trajectory data are printed.
+C     TRJBIT  : Trajectory bit for information coding.
+C     TRJDIP  : True, if dipole moments are written to the trajectory.
+C     TRJEXT  : If true, the extension of the trajectory is requested.
+C     TRJGEO  : True, if geometrical trajectory analysis is requested.
+C     TRJINT  : Step inteval for trajectory flushing.
+C     TRJLEN  : Molecular dynamics trajectory vector length.
+C     TRJMAG  : True, if magnetizability is written to the trajectory.
+C     TRJMAX  : Maximum trajectory entry marked.
+C     TRJMIN  : Minimum trajectory entry marked.
+C     TRJMOS  : True, if MO energies are written to the trajectory.
+C     TRJNHC  : True, if Nose-Hoover chain is written to trajectory. 
+C     TRJNMR  : True, if NMR shieldings are written to the trajectory.
+C     TRJOVL  : True, if overlaps between time steps are to be computed
+C     TRJPOL  : True, if polarizabilities are written to the trajectory.
+C     TRJRDF  : True, if radial distribution function is requested.
+C     TRJROG  : True, if rotational g-tensor is written to trajectory.
+C     TRJTYP  : Specify trajectory file (deMon.trj) operation.
+C     ULTMOS  : Upper molecular orbital trajectory limit.
+C     VARFIXED: Values of fixed variables in molecular dynamics.
+C     VELOTYP : Initial velocity type.
+C     XSPIN   : Select to do XES along trajectory for alfa or beta
+C
+C     ------------------------------------------------------------------
+C
+C     *** Common block for LOGICAL molecular dynamics variables ***
+C
+      LOGICAL MDCONST,MDFLP,MDVLP,TRJACC,TRJDIP,TRJEXT,TRJGEO,
+     $        TRJMAG,TRJMOS,TRJNHC,TRJNMR,TRJPOL,TRJRDF,TRJROG,TRJOVL
+C
+      COMMON /LDYNAMICS/ MDCONST,MDFLP,MDVLP,TRJACC,TRJDIP,TRJEXT,
+     $                   TRJGEO,TRJMAG,TRJMOS,TRJNHC,TRJNMR,TRJPOL,
+     $                   TRJRDF,TRJROG,TRJOVL
+C
+C     *** Common block for CHARACTER molecular dynamics variables ***
+C
+      CHARACTER*10 ETRJ,IRCTYP,MDBATH,MDVELO,MDZERO,PTRJ,TRJTYP,VELOTYP,
+     $             XSPIN
+C
+      COMMON /CDYNAMICS/ ETRJ,IRCTYP,MDBATH,MDVELO,MDZERO,PTRJ,TRJTYP,
+     $                   VELOTYP,XSPIN
+C
+C     *** Common block for INTEGER molecular dynamics variables ***
+C
+      INTEGER IRCSTEP,LLTMOS,MDCYC,MDINT,NHITS,NNHC,SIMINT,TRJATOM,
+     $        TRJBIT,TRJINT,TRJLEN,TRJMAX,TRJMIN,ULTMOS
+C
+      INTEGER FIXVAR(3*MAXATOM_ALL,4),NFIXVAR(0:3)
+C
+      COMMON /IDYNAMICS/ FIXVAR,IRCSTEP,LLTMOS,MDCYC,MDINT,NFIXVAR,
+     $                   NHITS,NNHC,SIMINT,TRJATOM,TRJBIT,TRJINT,
+     $                   TRJLEN,TRJMAX,TRJMIN,ULTMOS
+C
+C     *** Common block for REAL molecular dynamics variables ***
+C
+      REAL EKIN,EKINMAX,EKINMIN,EPOT,EPOTMAX,EPOTMIN,ESYS,ESYSMAX,
+     $     ESYSMIN,ETHERMO,ETOT,ETOTMAX,ETOTMIN,FRICTION,MDRADIUS,
+     $     MDDEL,MDDXI,MDSTEP,MDTAU,MDTEMP,MDTEMP0,MDTIME,THOOVER,TKIN
+C
+      REAL DELSTD(2),DELSUM(2),DIPSTD(2),DIPSUM(2),DXISTD(2),DXISUM(2),
+     $     MAGSTD(2),MAGSUM(2),NMRSTD(2,MAXATOM),NMRSUM(2,MAXATOM),
+     $     POLSTD(2),POLSUM(2),EKINSTD(2),EKINSUM(2),EPOTSTD(2),
+     $     EPOTSUM(2),ESYSSTD(2),ESYSSUM(2),ETOTSTD(2),ETOTSUM(2),
+     $     ROGSTD(2),ROGSUM(2),SEPSTD(2),SEPSUM(2),TKINSTD(2),TKINSUM(2)
+C
+      REAL MDDIP(0:3),MDMAG(0:3),MDNMR(0:3,MAXATOM),MDPOL(0:3),
+     $     MDROG(0:3),NHCOORD(MAXNHC),NHFORCE(MAXNHC),NHVELOS(MAXNHC),
+     $     QNOSE(MAXNHC),VARFIXED(3*MAXATOM_ALL)
+C
+      COMMON /RDYNAMICS/ DELSTD,DELSUM,DIPSTD,DIPSUM,DXISTD,DXISUM,EKIN,
+     $                   EKINMAX,EKINMIN,EKINSTD,EKINSUM,EPOT,EPOTMAX,
+     $                   EPOTMIN,EPOTSTD,EPOTSUM,ESYS,ESYSMAX,ESYSMIN,
+     $                   ESYSSTD,ESYSSUM,ETHERMO,ETOT,ETOTMAX,ETOTMIN,
+     $                   ETOTSTD,ETOTSUM,FRICTION,MAGSTD,MAGSUM,MDDEL,
+     $                   MDDIP,MDDXI,MDMAG,MDNMR,MDPOL,MDRADIUS,MDROG,
+     $                   MDSTEP,MDTAU,MDTEMP,MDTEMP0,MDTIME,NHCOORD,
+     $                   NHFORCE,NHVELOS,NMRSTD,NMRSUM,POLSTD,POLSUM,
+     $                   QNOSE,ROGSTD,ROGSUM,SEPSTD,SEPSUM,THOOVER,
+     $                   TKIN,TKINSTD,TKINSUM,VARFIXED
+C
+C     ------------------------------------------------------------------
