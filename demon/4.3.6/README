@@ -1,1 +1,7 @@
+ 
+- distchk.f: distance check disabled to be able to read in two structures outside of simulation mode
+- wfovlap_nohole.f: this calculates determinantal overlaps between two determinantal wave functions, without assuming any holes
+- wfovlap_gs_single_exc.f: here we compute the overlaps of singly excited states form a reference determinant
+- compress_gs_single_exc.f: creates an excited state determinant by switching indices of an occupied and an unoccupied state 
 
+ 

@@ -5,21 +5,21 @@ deMon/4.3.6/database. Put the demon directory in the same directory as demon is 
 
 Example standard installation:
 
-(standing in /home/mathias/programs/deMon.4.3.2)
-* export CREX_ROOT=/home/mathias/programs/deMon.4.3.2
+(standing in /home/mathias/programs/deMon.4.3.6)
+* export CREX_ROOT=/home/mathias/programs/deMon.4.3.6
 * deMon/bin/CREX
 * choose standard installation in list
 
 executable created in:
-/home/mathias/programs/deMon.4.3.2/deMon/4.3.2/object.std/deMon.4.3.2.std
+/home/mathias/programs/deMon.4.3.6/deMon/4.3.6/object.std/deMon.4.3.6.std
 
 custom installation:
 
-(standing in /home/mathias/programs/deMon.4.3.2)
-* export CREX_ROOT=/home/mathias/programs/deMon.4.3.2
-* deMon/bin/old.crex -c std demon/4.3.2/
+(standing in /home/mathias/programs/deMon.4.3.6)
+* export CREX_ROOT=/home/mathias/programs/deMon.4.3.6
+* deMon/bin/old.crex -c std demon/4.3.6/
 
 executable created in:
-/home/mathias/programs/deMon.4.3.2/demon/4.3.2/object.std/deMon.4.3.2.std
+/home/mathias/programs/deMon.4.3.6/demon/4.3.6/object.std/deMon.4.3.6.std
 
 
